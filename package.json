@@ -2,10 +2,10 @@
   "name": "homie-groceries",
   "version": "1.0.0",
   "description": "Shopping lists for all the boys",
-  "main": "./bin/www",
+  "main": "./src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/www"
+    "start": "node ./src/app.js"
   },
   "author": "Michael Nee",
   "license": "ISC",
