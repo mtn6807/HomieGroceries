@@ -22,7 +22,7 @@ var app = express();
 
 // Setup the 'view engine' for the app
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'www', 'views'));
 app.set('view engine', 'mustache');
 app.engine('mustache', mustacheExpress());
 
@@ -32,7 +32,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'www', 'public')));
 
 // And now, defining some endpoints - ironically, by more middleware.
 
