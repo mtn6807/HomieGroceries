@@ -1,0 +1,169 @@
+
+@fancy-font: 'Berkshire Swash', cursive;
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	margin: 0;
+	font-family: sans-serif;
+}
+
+header, section, footer {
+	padding: 2rem 0;
+}
+
+.width{
+	margin: 0 auto;
+	padding: 1rem;
+	&.narrow{
+		max-width: 700px;
+	}
+	&.wide{
+		max-width: 900px;
+	}
+}
+
+.cols{
+	display: flex;
+	.col{
+		margin: 1rem;
+		padding: 1rem;
+		flex-grow: 1;
+		flex-shrink: 0;
+		flex-basis: 0;
+	}
+}
+
+h1{
+	text-align: center;
+	margin: 0;
+}
+
+p{
+	margin-top: 1rem;
+	line-height: 1.25rem;
+}
+
+// Below here are page-specifics.
+
+.page#home{
+	background-color: red;
+}
+
+header{
+
+	background: hsla(217, 100%, 50%, 1);
+	background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+	background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+	background: -webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+	// filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+
+	.width{
+		display: flex;
+		justify-content: space-evenly;
+		align-items: flex-start;
+
+	}
+
+	#intro{
+		padding: 1rem;
+		margin: 1rem;
+		text-align: center;
+		h1{
+			font-family: @fancy-font;
+			color: white;
+			margin: 0;
+			font-size: 2em;
+		}
+	}
+
+	form{
+		background-color: #00000033;
+		display: flex;
+		flex-direction: column;
+		padding: 2rem 1rem;
+		margin: 1rem;
+		box-shadow: 4px 4px 6px 0px #0000005c;
+		label{
+			color: white;
+			font-family:sans-serif;
+			font-size:0.8em;
+			margin: 0.25rem 0.5rem;
+		}
+		input[type="text"],input[type="email"],input[type="password"]{
+			padding: 0.25rem 0.5rem;
+			margin-bottom: 1rem;
+			border: 3px solid #60EFFFAA;
+			border-radius: 6px;
+			background-color: transparent;
+			color: white;
+			box-sizing: border-box;
+		}
+		.checkbox{
+			position: relative;
+			margin-left: 0;
+			display: block;
+			padding-left: 35px;
+			margin-bottom: 24px;
+			cursor: pointer;
+			font-size: 22px;
+			input{
+				display:none;
+				&:checked ~ .checkmark{
+					background-color: #60EFFF;
+				}
+				&:checked ~ .checkmark:after{
+					content: "";
+					position: absolute;
+					left: 9px;
+					top: 5px;
+					width: 5px;
+					height: 10px;
+					border: solid white;
+					border-width: 0 3px 3px 0;
+					transform: rotate(45deg);
+				}
+			}
+			.checkmark{
+				position: absolute;
+				top:0;
+				left: 0;
+				width: 25px;
+				height: 25px;
+				background-color: darken(#60EFFF, 30%);
+			}
+
+		}
+
+		input[type="submit"]{
+			border: 0;
+			padding: 1rem;
+			background-color: darken(#60EFFF, 30%);
+			color: white;
+			font-size: 22px;
+			cursor: pointer;
+		}
+
+	}
+}
+
+#warning{
+	background-color: yellow;
+	font-style: italic;
+	text-align: center;
+}
+
+#pitch{
+	background-color: white;
+	h1{
+		font-family: @fancy-font;
+	}
+}
+
+footer{
+	color: #777777;
+	background-color: #333333;
+}

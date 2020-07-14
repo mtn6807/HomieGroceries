@@ -1,5 +1,5 @@
 const config = require('/../../../config');
-const users = require('../../../controller/user.js');
+const users = require('../../../controllers/users.js');
 
 var express = require('express');
 var router = express.Router();
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 	res.send('Sorry, no endpoints yet!');
 });
 
-/* 
+/*
 * POST /api/v1/register/
 * endpoint to register users.
 *
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 router.post('/register', (req, res) => {
 	try{
 		users.addUser(req.username,req.password);
-	i	res.status(200).json({status:"ok"});
+		res.status(200).json({status:"ok"});
 	}catch(err){
 		res.status(503);
 	}

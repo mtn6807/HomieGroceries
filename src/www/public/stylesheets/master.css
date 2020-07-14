@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+header,
+section,
+footer {
+  padding: 2rem 0;
+}
+.width {
+  margin: 0 auto;
+  padding: 1rem;
+}
+.width.narrow {
+  max-width: 700px;
+}
+.width.wide {
+  max-width: 900px;
+}
+.cols {
+  display: flex;
+}
+.cols .col {
+  margin: 1rem;
+  padding: 1rem;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+}
+h1 {
+  text-align: center;
+  margin: 0;
+}
+p {
+  margin-top: 1rem;
+  line-height: 1.25rem;
+}
+.page#home {
+  background-color: red;
+}
+header {
+  background: #0062ff;
+  background: linear-gradient(90deg, #0062ff 0%, #61efff 100%);
+  background: -moz-linear-gradient(90deg, #0062ff 0%, #61efff 100%);
+  background: -webkit-linear-gradient(90deg, #0062ff 0%, #61efff 100%);
+}
+header .width {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+header #intro {
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+}
+header #intro h1 {
+  font-family: 'Berkshire Swash', cursive;
+  color: white;
+  margin: 0;
+  font-size: 2em;
+}
+header form {
+  background-color: #00000033;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  margin: 1rem;
+  box-shadow: 4px 4px 6px 0px #0000005c;
+}
+header form label {
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  margin: 0.25rem 0.5rem;
+}
+header form input[type="text"],
+header form input[type="email"],
+header form input[type="password"] {
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
+  border: 3px solid #60EFFFAA;
+  border-radius: 6px;
+  background-color: transparent;
+  color: white;
+  box-sizing: border-box;
+}
+header form .checkbox {
+  position: relative;
+  margin-left: 0;
+  display: block;
+  padding-left: 35px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  font-size: 22px;
+}
+header form .checkbox input {
+  display: none;
+}
+header form .checkbox input:checked ~ .checkmark {
+  background-color: #60EFFF;
+}
+header form .checkbox input:checked ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+header form .checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background-color: #00b2c6;
+}
+header form input[type="submit"] {
+  border: 0;
+  padding: 1rem;
+  background-color: #00b2c6;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+#warning {
+  background-color: yellow;
+  font-style: italic;
+  text-align: center;
+}
+#pitch {
+  background-color: white;
+}
+#pitch h1 {
+  font-family: 'Berkshire Swash', cursive;
+}
+footer {
+  color: #777777;
+  background-color: #333333;
+}

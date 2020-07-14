@@ -14,4 +14,8 @@ function addUser(username, password){
 	});
 }
 
-module.export(addUser);
+// module.export(addUser);
+
+module.exports = {
+	"addUser": addUser
+};
