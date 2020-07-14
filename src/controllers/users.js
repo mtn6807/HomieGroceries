@@ -1,5 +1,5 @@
 const config = require('../config');
-const dbString = 'mongodb://'+config.dbURI+':'+config.dbPort+'users';
+const dbString = 'mongodb://'+config.dbURI+':'+config.dbPort+'/users';
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 
