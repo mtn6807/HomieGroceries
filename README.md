@@ -1,1 +1,3 @@
-Homie Groceries is for all the boys to make shopping lists
+# Homie Groceries
+
+*Shopping lists for all the boys*
