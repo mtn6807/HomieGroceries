@@ -1,6 +1,7 @@
 const config = require('../config');
 const dbString = 'mongodb://'+config.dbURI+':'+config.dbPort+'users';
-const MongoClient = require('mongodb.MongoClient');
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
 
 function addUser(username, password){
 	MongoClient.connect(dbString, (err, db)=>{
