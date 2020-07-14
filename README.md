@@ -10,3 +10,9 @@ cd HomieGroceries
 npm install
 npm start
 ```
+
+Or, to run in debug mode:
+
+```
+DEBUG=HG:* npm start
+```
