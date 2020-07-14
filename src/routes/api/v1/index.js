@@ -1,4 +1,4 @@
-const config = require('/../../../config');
+const config = require('../../../config');
 const users = require('../../../controllers/users.js');
 
 var express = require('express');
