@@ -1,5 +1,8 @@
 
 @fancy-font: 'Berkshire Swash', cursive;
+@color-blue-deep: hsla(217, 100%, 50%, 1);
+@color-purple-deep: hsla(20, 100%, 50%, 1);
+@color-blue-light: hsla(186, 100%, 69%, 1);
 
 *{
 	margin: 0;
@@ -7,12 +10,7 @@
 }
 
 body{
-	margin: 0;
 	font-family: sans-serif;
-}
-
-header, section, footer {
-	padding: 2rem 0;
 }
 
 .width{
@@ -26,144 +24,116 @@ header, section, footer {
 	}
 }
 
-.cols{
+.page{
+	background: hsla(217, 100%, 50%, 1);
+	background: linear-gradient(45deg, @color-blue-deep 0%, @color-blue-light 100%);
+	height: 100vh;
+	padding: 1rem;
+	box-sizing: border-box;
 	display: flex;
-	.col{
-		margin: 1rem;
-		padding: 1rem;
-		flex-grow: 1;
-		flex-shrink: 0;
-		flex-basis: 0;
-	}
-}
-
-h1{
-	text-align: center;
-	margin: 0;
-}
-
-p{
-	margin-top: 1rem;
-	line-height: 1.25rem;
-}
-
-// Below here are page-specifics.
-
-.page#home{
-	background-color: red;
+	flex-direction: column;
 }
 
 header{
 
-	background: hsla(217, 100%, 50%, 1);
-	background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
-	background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
-	background: -webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+	flex-grow: 1;
+	flex-shrink: 0;
 
 	.width{
+		height: 100%;
 		display: flex;
-		justify-content: space-evenly;
-		align-items: flex-start;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+	};
 
+	.floater{
+		background-color: @color-blue-deep;
+		box-shadow: -4px 4px 16px 0px fade(black, 50%);
+		padding: 2rem;
 	}
 
 	#intro{
-		padding: 1rem;
-		margin: 1rem;
 		text-align: center;
 		h1{
 			font-family: @fancy-font;
 			color: white;
-			margin: 0;
-			font-size: 2em;
+			font-size: 3em;
+			margin-bottom: 1rem;
+		}
+		p{
+			color: white;
+			font-style: italic;
+			margin: 1rem 0;
 		}
 	}
 
 	form{
-		background-color: #00000033;
 		display: flex;
 		flex-direction: column;
-		padding: 2rem 1rem;
-		margin: 1rem;
-		box-shadow: 4px 4px 6px 0px #0000005c;
 		label{
-			color: white;
-			font-family:sans-serif;
-			font-size:0.8em;
-			margin: 0.25rem 0.5rem;
+			color: fade(white, 90%);
+			margin-top: 1rem;
+			margin-bottom: 0.25rem;
 		}
-		input[type="text"],input[type="email"],input[type="password"]{
-			padding: 0.25rem 0.5rem;
-			margin-bottom: 1rem;
-			border: 3px solid #60EFFFAA;
-			border-radius: 6px;
-			background-color: transparent;
-			color: white;
-			box-sizing: border-box;
+		input{
+			margin: 0.25rem 0;
+			border: none;
+			padding: 0.5rem;
+			font-size: 1em;
 		}
-		.checkbox{
-			position: relative;
-			margin-left: 0;
-			display: block;
-			padding-left: 35px;
-			margin-bottom: 24px;
-			cursor: pointer;
-			font-size: 22px;
-			input{
-				display:none;
-				&:checked ~ .checkmark{
-					background-color: #60EFFF;
-				}
-				&:checked ~ .checkmark:after{
-					content: "";
-					position: absolute;
-					left: 9px;
-					top: 5px;
-					width: 5px;
-					height: 10px;
-					border: solid white;
-					border-width: 0 3px 3px 0;
-					transform: rotate(45deg);
-				}
+		input[type="text"],input[type="password"]{
+			// background-color: red;
+			background-color: fade(white, 100%);
+			border-bottom: 4px solid white;
+			border-top: 4px solid white;
+			&:hover{
+				border-bottom: 4px solid lighten(@color-purple-deep, 30%);
 			}
-			.checkmark{
-				position: absolute;
-				top:0;
-				left: 0;
-				width: 25px;
-				height: 25px;
-				background-color: darken(#60EFFF, 30%);
+			&:focus{
+				border-bottom: 4px solid lighten(@color-purple-deep, 10%);
 			}
-
 		}
-
 		input[type="submit"]{
-			border: 0;
+			background-color: lighten(@color-purple-deep, 10%);
+			margin-top: 1rem;
 			padding: 1rem;
-			background-color: darken(#60EFFF, 30%);
 			color: white;
-			font-size: 22px;
+			font-weight: bold;
+			box-shadow: -4px 4px 8px 0px fade(black, 20%);
 			cursor: pointer;
+			&:hover{
+				background-color: lighten(@color-purple-deep, 20%);
+			}
+			&.disabled{
+				background-color: greyscale(lighten(@color-purple-deep, 10%));
+			}
 		}
-
-	}
-}
-
-#warning{
-	background-color: yellow;
-	font-style: italic;
-	text-align: center;
-}
-
-#pitch{
-	background-color: white;
-	h1{
-		font-family: @fancy-font;
+		.error{
+			color: lighten(@color-purple-deep, 35%);
+			text-align: center;
+			margin-top: 1rem;
+			font-weight: bold;
+			&.no{
+				display: none;
+			}
+		}
+		a{
+			text-align: center;
+			cursor: pointer;
+			color: fade(@color-blue-light, 50%);
+			text-decoration: underline;
+			margin-top: 0.5rem;
+			&:hover{
+				color: fade(@color-blue-light, 100%);
+			}
+		}
 	}
 }
 
 footer{
-	color: #777777;
-	background-color: #333333;
+	color: fade(black, 40%);
+	text-align: center;
+	font-size: 1em;
 }

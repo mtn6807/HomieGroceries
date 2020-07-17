@@ -4,24 +4,53 @@
 		<meta charset="utf-8">
 		<title>HomieGroceries</title>
 		<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
-		<!-- <link rel="stylesheet" href="/stylesheets/master.css"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/stylesheets/master.css">
+		<script type="text/javascript">
+			function logIn(){
+				// set login button status
+				let loginButton = document.querySelector('input[type="submit"]');
+				let errorSpan = document.querySelector('.error');
+				loginButton.value = "Logging in...";
+				loginButton.classList.add('disabled');
+				// Hide the error message
+				errorSpan.classList.add('no');
+				// Do something
+				setTimeout(()=>{
+					loginButton.value = "Log In";
+					loginButton.classList.remove('disabled');
+					// Hide the error message
+					errorSpan.classList.remove('no');
+					errorSpan.textContent = "Shit's fucked, yo. Try again.";
+				},1000);
+			}
+			function init(){
+				document.querySelector('form').addEventListener('submit', e=>{
+					e.preventDefault();
+					logIn();
+				});
+			}
+		</script>
 	</head>
-	<body>
+	<body onload='init()'>
 		<div class="page" id="home">
 			<header id='splash'>
 				<div class="width narrow">
-					<div id="intro">
-						<h1>Homie Groceries</h1>
-						<p>Shopping lists for all the boys.</p>
+					<div class="floater">
+						<div id="intro">
+							<h1>Homie Groceries</h1>
+							<p>Shopping lists for all the boys.</p>
+						</div>
+						<form action="/api/v1/login" method="post">
+							<label for="uname">Username</label>
+							<input id="uname" type="text" name="uname" required>
+							<label for="pword">Password</label>
+							<input id="pword" type="password" name="pword" required>
+							<span class='error no'>Not right. Doug Dimmadome.</span>
+							<input type="submit" value="Log In">
+							<a onclick="alert('lmao get fucked nerd')">Forgot Password?</a>
+						</form>
 					</div>
-					<form action="/api/v1/register" method="post">
-						<label for="uname">Username</label>
-						<input id="uname" type="text" name="uname" required>
-						<label for="pword">Password</label>
-						<input id="pword" type="password" name="pword" required>
-						<span>12 characters</span>
-						<input type="submit" value="Log In">
-					</form>
 				</div>
 			</header>
 			<footer>
