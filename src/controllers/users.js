@@ -3,14 +3,15 @@ const dbString = 'mongodb://'+config.dbURI+':'+config.dbPort+'/users';
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 
-function addUser(username, password){
-	MongoClient.connect(dbString, (err, db)=>{
+function addUser(username, password, mail){
+	MongoClient.connect(dbString, (err, client)=>{
+		var db = client.db('homies');
 		if(err){throw err};
-		var doc = {user: username, pass: password};
+		var doc = {user: username, pass: password, email: mail};
 
-		db.collection("users").insertOne(doc, (err,res)=>{
+		db.collection('users').insertOne(doc, (err,res)=>{
 			if(err){throw err};
-			db.close();
+			client.close();
 		});
 	});
 }
