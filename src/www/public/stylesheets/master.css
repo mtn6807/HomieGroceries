@@ -3,13 +3,7 @@
   padding: 0;
 }
 body {
-  margin: 0;
   font-family: sans-serif;
-}
-header,
-section,
-footer {
-  padding: 2rem 0;
 }
 .width {
   margin: 0 auto;
@@ -21,128 +15,111 @@ footer {
 .width.wide {
   max-width: 900px;
 }
-.cols {
-  display: flex;
-}
-.cols .col {
-  margin: 1rem;
+.page {
+  background: #0062ff;
+  background: linear-gradient(45deg, #0062ff 0%, #61efff 100%);
+  height: 100vh;
   padding: 1rem;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-}
-h1 {
-  text-align: center;
-  margin: 0;
-}
-p {
-  margin-top: 1rem;
-  line-height: 1.25rem;
-}
-.page#home {
-  background-color: red;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 header {
-  background: #0062ff;
-  background: linear-gradient(90deg, #0062ff 0%, #61efff 100%);
-  background: -moz-linear-gradient(90deg, #0062ff 0%, #61efff 100%);
-  background: -webkit-linear-gradient(90deg, #0062ff 0%, #61efff 100%);
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 header .width {
+  height: 100%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+header .floater {
+  background-color: #0062ff;
+  box-shadow: -4px 4px 16px 0px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
 }
 header #intro {
-  padding: 1rem;
-  margin: 1rem;
   text-align: center;
 }
 header #intro h1 {
   font-family: 'Berkshire Swash', cursive;
   color: white;
-  margin: 0;
-  font-size: 2em;
+  font-size: 3em;
+  margin-bottom: 1rem;
+}
+header #intro p {
+  color: white;
+  font-style: italic;
+  margin: 1rem 0;
 }
 header form {
-  background-color: #00000033;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
-  margin: 1rem;
-  box-shadow: 4px 4px 6px 0px #0000005c;
 }
 header form label {
-  color: white;
-  font-family: sans-serif;
-  font-size: 0.8em;
-  margin: 0.25rem 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+header form input {
+  margin: 0.25rem 0;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1em;
 }
 header form input[type="text"],
-header form input[type="email"],
 header form input[type="password"] {
-  padding: 0.25rem 0.5rem;
-  margin-bottom: 1rem;
-  border: 3px solid #60EFFFAA;
-  border-radius: 6px;
-  background-color: transparent;
-  color: white;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  border-bottom: 4px solid white;
+  border-top: 4px solid white;
 }
-header form .checkbox {
-  position: relative;
-  margin-left: 0;
-  display: block;
-  padding-left: 35px;
-  margin-bottom: 24px;
-  cursor: pointer;
-  font-size: 22px;
+header form input[type="text"]:hover,
+header form input[type="password"]:hover {
+  border-bottom: 4px solid #ffbb99;
 }
-header form .checkbox input {
-  display: none;
-}
-header form .checkbox input:checked ~ .checkmark {
-  background-color: #60EFFF;
-}
-header form .checkbox input:checked ~ .checkmark:after {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-}
-header form .checkbox .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  background-color: #00b2c6;
+header form input[type="text"]:focus,
+header form input[type="password"]:focus {
+  border-bottom: 4px solid #ff7733;
 }
 header form input[type="submit"] {
-  border: 0;
+  background-color: #ff7733;
+  margin-top: 1rem;
   padding: 1rem;
-  background-color: #00b2c6;
   color: white;
-  font-size: 22px;
+  font-weight: bold;
+  box-shadow: -4px 4px 8px 0px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-#warning {
-  background-color: yellow;
-  font-style: italic;
+header form input[type="submit"]:hover {
+  background-color: #ff9966;
+}
+header form input[type="submit"].disabled {
+  background-color: #999999;
+}
+header form .error {
+  color: #ffccb3;
   text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
 }
-#pitch {
-  background-color: white;
+header form .error.no {
+  display: none;
 }
-#pitch h1 {
-  font-family: 'Berkshire Swash', cursive;
+header form a {
+  text-align: center;
+  cursor: pointer;
+  color: rgba(97, 239, 255, 0.5);
+  text-decoration: underline;
+  margin-top: 0.5rem;
+}
+header form a:hover {
+  color: #61efff;
 }
 footer {
-  color: #777777;
-  background-color: #333333;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 1em;
 }
