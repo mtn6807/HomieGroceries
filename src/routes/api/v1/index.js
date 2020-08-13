@@ -14,11 +14,11 @@ router.get('/', function(req, res, next) {
 * POST /api/v1/register/
 * endpoint to register users.
 *
-*{username: <username>, password: <password>}
+*{username: <username>, password: <password>, email: <email>}}
 */
 router.post('/register', (req, res) => {
 	try{
-		users.addUser(req.username,req.password);
+		users.addUser(req.body.uname,req.body.pword,req.body.email);
 		res.status(200).json({status:"ok"});
 	}catch(err){
 		res.status(503);
