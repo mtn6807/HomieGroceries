@@ -3,7 +3,7 @@ const dbString = 'mongodb://'+config.dbURI+':'+config.dbPort+'/users';
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const bcrypt = require('bcrypt');
-const saltRounds = 3;
+const saltRounds = config.saltRounds;
 
 function userExists(username){
 	return new Promise((resolve, reject)=>{

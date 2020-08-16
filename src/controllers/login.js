@@ -3,7 +3,6 @@ const dbString = 'mongodb://'+config.dbURI+':'+config.dbPort+'/users';
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const bcrypt = require('bcrypt');
-const saltRounds = 3;
 
 function validateUser(username, password){
     return new Promise((resolve, reject)=>{

@@ -1,8 +1,10 @@
 const config = require('../../../config');
 const users = require('../../../controllers/users.js');
 const login = require('../../../controllers/login.js');
+const jwt = require('../../../controllers/tokens.js');
 
 var express = require('express');
+const { issueToken } = require('../../../controllers/tokens.js');
 var router = express.Router();
 
 /* GET /api/v1/ */
@@ -31,11 +33,18 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
 	try{
 		const valid = await login.validateUser(req.body.uname,req.body.pword);
-		if(valid == true){res.status(200).json({status:"ok"});}
+		if(valid == true){
+			res.cookie("token", jwt.issueToken(req.body.uname),{ maxAge: jwtExpirySeconds * 1000 })
+			res.status(200).json({status:"ok"})
+		}
 		if(valid == false){res.status(403).json({status:"unauthorized"});}
 	}catch(err){
 		res.status(503);
 	}
+});
+
+router.get('/refresh', (req, res) => {
+	
 });
 
 module.exports = router;
