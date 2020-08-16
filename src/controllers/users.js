@@ -96,8 +96,6 @@ async function addUser(username, password, mail){
 	});
 }
 
-
-
 // module.export(addUser);
 
 module.exports = {
