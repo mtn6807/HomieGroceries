@@ -44,7 +44,14 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/refresh', (req, res) => {
-	
+	try{
+		if(jwt.verifyToken(req.cookies.token)){
+			res.cookie("token", jwt.issueToken(req.body.uname),{ maxAge: jwtExpirySeconds * 1000 })
+			res.status(200).json({status:"ok"})
+		}else{res.status(403).json({status:"unauthorized"});}
+	}catch(err){
+		res.status(503);
+	}
 });
 
 module.exports = router;
