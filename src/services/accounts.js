@@ -4,8 +4,8 @@
 
 // When we want to register a new user
 
-function registerNewUser(username, password, email, isHomie){
-	
+function registerNewUser(username, password, email, isHomie) {
+
 }
 
 //
