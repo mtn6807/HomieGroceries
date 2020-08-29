@@ -86,24 +86,30 @@ function isPasswordValid(password) {
 @description log a user in
 @param {string} email - their email
 @param {string} password - their password
-@returns {string} a JWT refresh token
-@throws {{success, message}} if the login is invalid
+@returns {bool} success
 */
 async function login(email, password) {
 	// User's gotta exist
 	const user = await database.getUser(email);
-	if (user === null) {
-		throw new Error('login failed');
-	}
+	if (user === null) {false;}
 
 	// Password's gotta be valid
 	const passwordIsValid = await bcrypt.compare(password, user.passwordHash);
-	if (!passwordIsValid) {
-		throw new Error('login failed');
-	}
+	if (!passwordIsValid) {return false;}
 
-	// Yeet - they get a refresh token!
-	return tokens.signToken({email}, config.tokens.refreshLifetime * 1000);
+	// Yeet - login successful!
+	return true;
+}
+
+/**
+@description get a refresh token for an email
+@param {string} email - the email of the user
+@returns {string} the refresh token
+*/
+async function getRefreshToken(email){
+	const token = {email};
+	const signedToken = await tokens.signToken(token, config.tokens.refreshLifetime * 1000);
+	return signedToken;
 }
 
 /**
@@ -112,32 +118,31 @@ async function login(email, password) {
 @param {string} displayName - xXx_heckerman_xXx
 @param {string} password - what's ur password bro?
 @param {bool} isHomie - are they a homie?
-@returns {Object} result
-@returns {bool} result.success - did it work?
-@returns {string} result.message - what happened
+@returns {bool} true - when successful
+@returns {string} reason - when there's a problem
 */
 async function register(email, displayName, password, isHomie) {
 	// They gotta be a homie.
 	if (!isHomie) {
-		throw new Error('Homie Groceries is for Homies Only!');
+		return 'Homie Groceries is for Homies Only!';
 	}
 
 	// The email has to be valid
 	const emailIsValid = await isEmailValid(email);
 	if (!emailIsValid) {
-		throw new Error('What a shitty email.');
+		return 'What a shitty email.';
 	}
 
 	// The email has to be available
 	const emailIsTaken = await isEmailTaken(email);
 	if (emailIsTaken) {
-		throw new Error('That email has already been taken, bitch.');
+		return 'That email has already been taken, bitch.';
 	}
 
 	// That password's gotta be chill.
 	const passwordIsValid = isPasswordValid(password);
 	if (!passwordIsValid) {
-		throw new Error('What a shitty password.');
+		return 'What a shitty password.';
 	}
 
 	// Are users allowed to put html in their displaynames?
@@ -149,17 +154,29 @@ async function register(email, displayName, password, isHomie) {
 	// Throw 'em in the DB
 	await database.createUser(email, displayName, passwordHash);
 
-	// That's a fact, jack - give em a refresh token.
-	return tokens.signToken({email}, config.tokens.refreshLifetime * 1000);
+	// That's a fact, jack.
+	return true;
 }
 
+/**
+@description checks the validity of a refresh token
+@param {string} refreshToken - a suspected refresh token
+@returns {Promise.<string>} email - the user's email address, if valid
+@returns {Promise.<bool>} false - if invalid
+*/
 async function refresh(refreshToken) {
-	// Is the token j-chillin?
-	tokens.verifyToken(refreshToken).then(d => {
-		// It worked
-		// just return a new, valid access_token, ya know?
-		return tokens.signToken(d, config.tokens.accessLifetime);
+	return tokens.verifyToken(refreshToken).catch(e=>{
+		return false;
 	});
+}
+
+/**
+@description signs an access token for a user
+@param {string} email - the user that this is for
+@returns {Promise.<string>} - a signed access token
+*/
+async function getAccessToken(email){
+	return tokens.signToken(email, config.tokens.accessLifetime);
 }
 
 module.exports = {
