@@ -3,10 +3,10 @@
 const winston = require('winston');
 const config = require('@root/config');
 
-const logger winston.createLogger({
-	level: config.logger.level,
+const logger = winston.createLogger({
+	level: 'debug',
 	format: winston.format.json(),
-	defaultMeta: {service:"HomieGroceries"},
+	defaultMeta: {service: 'HomieGroceries'},
 	transports: [
 		new winston.transports.Console()
 	]

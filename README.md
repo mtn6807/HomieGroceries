@@ -4,6 +4,8 @@
 
 ## Installation
 
+Homie Groceries depends on a running instance of MongoDB.
+
 ```
 git clone https://github.com/mtn6807/HomieGroceries.git
 cd HomieGroceries

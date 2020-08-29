@@ -14,7 +14,7 @@ async function load() {
 	return {
 		express,
 		http
-	}
+	};
 }
 
 module.exports = {
