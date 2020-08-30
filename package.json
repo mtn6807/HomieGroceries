@@ -25,6 +25,10 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-html-tag-include": "^1.0.1",
+    "gulp-less": "^4.0.1",
+    "gulp-rm": "^2.0.0",
     "xo": "^0.33.0"
   }
 }

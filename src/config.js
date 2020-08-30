@@ -16,7 +16,7 @@ module.exports = {
 	},
 	tokens: {
 		secret: 'powersergthisisthesecretfuckyouscott.com',
-		accessLifetime: '120', // Two minutes for access tokens
-		refreshLifetime: '604800' // 1 week for refresh tokens
+		accessLifetime: 120, // Two minutes for access tokens
+		refreshLifetime: 604800 // 1 week for refresh tokens
 	}
 };

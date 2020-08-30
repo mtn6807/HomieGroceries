@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>HomieGroceries</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/master.css">
+	</head>
+
+	<body>
+		<header>
+			<h1>Register</h1>
+		</header>
+
+		<main>
+			
+	<form action="/api/v1/register" method="post">
+		<label for="email">Email</label>
+		<input id="email" type="email" name="email" required>
+		<label for="displayName">Display Name</label>
+		<input id="displayName" type="text" name="displayName" required>
+		<label for="password">Password</label>
+		<input id="password" type="password" name="password" required>
+		<label for="isHomie">isHomie</label>
+		<input id="isHomie" type="checkbox" name="isHomie" required>
+		<input type="submit" value="Register">
+	</form>
+
+		</main>
+		<footer>
+			<p>&copy; 2020 B1Labs</p>
+		</footer>
+
+	</body>
+</html>
+

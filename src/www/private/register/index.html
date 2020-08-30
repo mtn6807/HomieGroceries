@@ -1,0 +1,16 @@
+<include
+	src="../partials/template.partial"
+	title="Register"
+>
+	<form action="/api/v1/register" method="post">
+		<label for="email">Email</label>
+		<input id="email" type="email" name="email" required>
+		<label for="displayName">Display Name</label>
+		<input id="displayName" type="text" name="displayName" required>
+		<label for="password">Password</label>
+		<input id="password" type="password" name="password" required>
+		<label for="isHomie">isHomie</label>
+		<input id="isHomie" type="checkbox" name="isHomie" required>
+		<input type="submit" value="Register">
+	</form>
+</include>

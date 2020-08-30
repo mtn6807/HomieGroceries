@@ -30,11 +30,12 @@ async function load() {
 
 	// Errors are cool, yo. Send em back.
 	app.use((err, request, response, next) => {
-		const status = err.status || 500;
+		console.error(err);
+		let status = err.status || 500;
 		status = status < 500 ? status : 500;
-		const message = err.message || 'Internal Server Error';
+		let message = err.message || 'Internal Server Error';
 		message = status < 500 ? message : 'Internal Server Error';
-		response.status(err.status).json({ok: false, err});
+		response.status(status).json({ok: false, message});
 	});
 	app.set('port', config.port);
 

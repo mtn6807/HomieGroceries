@@ -11,5 +11,10 @@ router.post('/register', controllers.v1.authentication.register);
 router.post('/login', controllers.v1.authentication.login);
 router.get('/logout', controllers.v1.authentication.logout);
 router.get('/refresh', controllers.v1.authentication.refresh);
+router.get(
+	'/houses',
+	controllers.v1.authentication.checkAuthed,
+	controllers.v1.houses.get
+);
 
 module.exports = router;

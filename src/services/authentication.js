@@ -20,7 +20,7 @@ function isEmailValid(email) {
 @returns {bool} - if it's in use
 */
 async function isEmailTaken(email) {
-	const user = await database.getUser(email);
+	const user = await database.users.getByEmail(email);
 	return user !== null;
 }
 
@@ -90,7 +90,7 @@ function isPasswordValid(password) {
 */
 async function login(email, password) {
 	// User's gotta exist
-	const user = await database.getUser(email);
+	const user = await database.users.getByEmail(email);
 	if (user === null) {false;}
 
 	// Password's gotta be valid
@@ -152,7 +152,7 @@ async function register(email, displayName, password, isHomie) {
 	const passwordHash = await bcrypt.hash(password, config.passwords.saltRounds);
 
 	// Throw 'em in the DB
-	await database.createUser(email, displayName, passwordHash);
+	await database.users.create(email, displayName, passwordHash);
 
 	// That's a fact, jack.
 	return true;
@@ -176,11 +176,15 @@ async function refresh(refreshToken) {
 @returns {Promise.<string>} - a signed access token
 */
 async function getAccessToken(email){
-	return tokens.signToken(email, config.tokens.accessLifetime);
+	console.log('setting access token for user');
+	console.log(email);
+	return await tokens.signToken({email}, config.tokens.accessLifetime);
 }
 
 module.exports = {
 	login,
 	register,
-	refresh
+	refresh,
+	getRefreshToken,
+	getAccessToken
 };
