@@ -2,6 +2,9 @@
 	src="../partials/template.partial"
 	title="Register"
 >
+	<script src="/js/register.js" type="module" charset="utf-8"></script>
+	<a href="/">Home</a>
+	<a href="/register">Have an Account? Login.</a>
 	<form action="/api/v1/register" method="post">
 		<label for="email">Email</label>
 		<input id="email" type="email" name="email" required>
@@ -11,6 +14,7 @@
 		<input id="password" type="password" name="password" required>
 		<label for="isHomie">isHomie</label>
 		<input id="isHomie" type="checkbox" name="isHomie" required>
+		<span class="feedback no"></span>
 		<input type="submit" value="Register">
 	</form>
 </include>

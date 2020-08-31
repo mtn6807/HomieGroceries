@@ -11,6 +11,19 @@ async function getByMember(email){
 	return await db.houses.getByMember(email);
 }
 
+async function create(name, creator){
+	const house = {
+		name,
+		creator,
+		createdAt: Date.now(),
+		members: [
+			creator
+		]
+	};
+	db.houses.add(house);
+}
+
 module.exports = {
-	getByMember
+	getByMember,
+	create
 };

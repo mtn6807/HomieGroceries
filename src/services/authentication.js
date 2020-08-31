@@ -91,7 +91,7 @@ function isPasswordValid(password) {
 async function login(email, password) {
 	// User's gotta exist
 	const user = await database.users.getByEmail(email);
-	if (user === null) {false;}
+	if (user === null) {return false;}
 
 	// Password's gotta be valid
 	const passwordIsValid = await bcrypt.compare(password, user.passwordHash);

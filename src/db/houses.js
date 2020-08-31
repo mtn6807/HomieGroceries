@@ -16,6 +16,15 @@ async function getByMember(email){
 	return houses;
 }
 
+async function add(house){
+	const client = await dbCore.getClient();
+	return await client
+		.db('HG')
+		.collection('houses')
+		.insertOne(house);
+}
+
 module.exports = {
-	getByMember
+	getByMember,
+	add
 };

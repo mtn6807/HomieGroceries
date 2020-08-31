@@ -39,12 +39,12 @@ async function isReady(){
 		// uh oh. Try the refresh endpoint, should work.
 		fetch('/api/v1/refresh', {
 			credentials: "same-origin",
-		}).then(response=>{
-			if(response.redirected){ // we get a redirect if valid.
+		})
+		.then(response=>response.json())
+		.then(data=>{
+			if(data.ok){ // We've been refreshed!
 				resolve();
 			}else{ // Nope, shit's fucked bro.
-				console.log(`Refresh token has expired. Bailing...`);
-				location.href = '/login';
 				reject();
 			}
 		});

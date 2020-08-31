@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>HomieGroceries</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/master.css">
+	</head>
+
+	<body>
+		<header>
+			<h1>New House</h1>
+		</header>
+
+		<main>
+			
+	<script src="/js/newhouse.js" type="module" charset="utf-8"></script>
+	<p><a href="/houses">Back to your houses</a></p>
+	<form action="/api/v1/houses" method="post">
+		<label for="name">House Name</label>
+		<input id="name" type="text" name="name" required>
+		<span class="feedback no"></span>
+		<input type="submit" value="Create House!">
+	</form>
+
+		</main>
+		<footer>
+			<p>&copy; 2020 B1Labs</p>
+		</footer>
+
+	</body>
+</html>
+

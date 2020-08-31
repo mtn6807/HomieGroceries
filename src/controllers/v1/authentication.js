@@ -23,7 +23,7 @@ async function register(request, response) {
 		httpOnly: true,
 		//secure: true,
 		sameSite: 'Strict'
-	}).redirect(301, '/api/v1/refresh');
+	}).json({ok: true});
 }
 
 // The user wants to login - grants a refresh token
@@ -41,7 +41,7 @@ async function login(request, response) {
 		httpOnly: true,
 		//secure: true,
 		sameSite: 'Strict'
-	}).redirect(301, '/api/v1/refresh');
+	}).json({ok: true});
 }
 
 // The user wants to logout
@@ -55,8 +55,13 @@ async function logout(request, response) {
 			//secure: true,
 			sameSite: 'Strict'
 		})
-		.clearCookie('accessToken', )
-		.redirect(301, '/');
+		.clearCookie('accessToken', {
+			maxAge: config.tokens.accessLifetime * 1000,
+			httpOnly: false, // the app needs this
+			//secure: true,
+			sameSite: 'Strict'
+		})
+		.json({ok: true});
 }
 
 // If you have a valid refresh token, this grants a new access_token
@@ -87,7 +92,7 @@ async function refresh(request, response) {
 			//secure: true,
 			sameSite: 'Strict'
 		})
-		.redirect(301, '/houses');
+		.json({ok: true});
 }
 
 // Used as a middleware, this checks the auth header for a valid access token
