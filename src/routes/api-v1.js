@@ -23,4 +23,9 @@ router.post(
 	controllers.v1.houses.create
 );
 
+// 404 catch
+router.use((request, response)=>{
+	response.status(404).json({ok:false});
+});
+
 module.exports = router;

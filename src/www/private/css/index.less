@@ -1,3 +1,13 @@
+// # The Big CSS
+
+// Some variables
+@underShadow: 0px 2px 4px -2px #0000003F;
+@overHighlight: inset 0px 2px 4px -2px #FFFFFFFF;
+@offwhite: #FBFBFB;
+@offerwhite: #EFEFF7;
+
+// ## The Big parts
+
 *{
 	margin: 0;
 	padding: 0;
@@ -8,45 +18,163 @@ body{
 	flex-direction: column;
 	max-height: 100vh;
 	min-height: 100vh;
+	font-family: 'Inconsolata', sans-serif;
+	background-color: @offerwhite;
 }
 
 header{
-	border-bottom: 1px solid #404;
+	position: relative;
 	padding: 1rem;
 	text-align: center;
-}
-
-form{
-	display: flex;
-	flex-direction: column;
-	padding: 1rem;
-	max-width: 500px;
-	margin: 0 auto;
-}
-
-input{
-	margin: 0.25rem 0rem;
-}
-
-input[type="text"], input[type="password"], input[type="email"]{
-	padding: 0.5rem 1rem;
-}
-
-input[type="submit"]{
-	padding: 0.5rem 1rem;
+	background-color: @offwhite;
+	box-shadow: @underShadow;
+	a{
+		position: absolute;
+		height: 100%;
+		top: 0;
+		padding: 0 1rem;
+		background:none;
+		border: none;
+		font-size: 1.5rem;
+		color: #0000EE;
+		cursor: pointer;
+		// Put the contents in the middle
+		display: flex;
+		align-items: center;
+		&.left{
+			left: 1rem;
+		}
+		&.right{
+			right: 1rem;
+		}
+	}
+	h1{
+		font-size: 1.5rem;
+	}
 }
 
 main{
-	overflow: auto;
-	padding: 1rem;
 	flex-grow: 1;
+	overflow: auto;
+	overflow-y: scroll; /* has to be scroll, not auto - why? for touch scrolling */
+	-webkit-overflow-scrolling: touch;
+	background-color: @offerwhite;
 }
 
 footer{
-	text-align: center;
 	padding: 1rem;
-	border-top: 1px solid #404;
+	text-align: center;
+	background-color: @offwhite;
+	box-shadow: @overHighlight;
 }
+
+// ## The Smol Parts
+
+main .island{ // This is an island that floats on the main content area
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 0 1rem;
+	background-color: @offwhite;
+	box-shadow:
+		@underShadow,
+		@overHighlight;
+}
+
+main .spacer{ // A spacer in the main area, for use between islands.
+	height: 1rem;
+}
+
+// Here's things that can go in an island :)
+.island{
+
+	.row(){ // General row styling
+		display: block;
+		padding: 1rem;
+	}
+
+	p{ // Paragraphs!
+		.row();
+	}
+
+	// It's a Labeled Input Group!
+	label{
+		.row();
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		cursor: pointer;
+
+		// We've got text on the left!
+		span{
+			display: inline-block;
+			margin-right: 1rem;
+		}
+
+		// And an Input on the Right!
+		input[type="text"], input[type="password"], input[type="email"]{
+			flex-grow: 1;
+			max-width: 66%;
+			padding: 0;
+			font-family: Inconsolata;
+			font-size: 1rem;
+			border: none;
+			outline: none;
+			background: none;
+		}
+
+		// Input could be a checkbox
+		input[type="checkbox"]{
+		}
+	}
+
+	// Links to places!
+	a{
+		.row();
+		text-decoration: none;
+		position: relative;
+		cursor: pointer;
+		color: #0000EE;
+		&:visited{
+			color: #551A8B;
+		}
+		svg{
+			position: absolute;
+			right: 1rem;
+		}
+	}
+
+	// Buttonly inputs in islands
+	input[type="submit"], input[type="button"], button{
+		.row();
+		width: 100%;
+		font-size: 1rem;
+		text-decoration: none;
+		position: relative;
+		background: none;
+		outline: none;
+		border: none;
+		font-weight: bold;
+		color: blue;
+		cursor: pointer;
+	}
+
+	// Divider between island members, keep 'em from fighting
+	hr{
+		height: 1px;
+		border: none;
+		background-color: #0000003F;
+	}
+
+	// Forms have feedback elements
+	form > .feedback{
+		text-align: center;
+		color: #EE0000;
+		&.no{
+			display: none;
+		}
+	}
+}
+
 
 // testUser@rit.edu
 // testPassword1!

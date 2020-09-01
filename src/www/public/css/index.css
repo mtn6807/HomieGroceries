@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  min-height: 100vh;
+  font-family: 'Inconsolata', sans-serif;
+  background-color: #EFEFF7;
+}
+header {
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+  background-color: #FBFBFB;
+  box-shadow: 0px 2px 4px -2px #0000003F;
+}
+header a {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  padding: 0 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #0000EE;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+header a.left {
+  left: 1rem;
+}
+header a.right {
+  right: 1rem;
+}
+header h1 {
+  font-size: 1.5rem;
+}
+main {
+  flex-grow: 1;
+  overflow: auto;
+  overflow-y: scroll;
+  /* has to be scroll, not auto - why? for touch scrolling */
+  -webkit-overflow-scrolling: touch;
+  background-color: #EFEFF7;
+}
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #FBFBFB;
+  box-shadow: inset 0px 2px 4px -2px #FFFFFFFF;
+}
+main .island {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  background-color: #FBFBFB;
+  box-shadow: 0px 2px 4px -2px #0000003F, inset 0px 2px 4px -2px #FFFFFFFF;
+}
+main .spacer {
+  height: 1rem;
+}
+.island p {
+  display: block;
+  padding: 1rem;
+}
+.island label {
+  display: block;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.island label span {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.island label input[type="text"],
+.island label input[type="password"],
+.island label input[type="email"] {
+  flex-grow: 1;
+  max-width: 66%;
+  padding: 0;
+  font-family: Inconsolata;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: none;
+}
+.island a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  color: #0000EE;
+}
+.island a:visited {
+  color: #551A8B;
+}
+.island a svg {
+  position: absolute;
+  right: 1rem;
+}
+.island input[type="submit"],
+.island input[type="button"],
+.island button {
+  display: block;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  text-decoration: none;
+  position: relative;
+  background: none;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  color: blue;
+  cursor: pointer;
+}
+.island hr {
+  height: 1px;
+  border: none;
+  background-color: #0000003F;
+}
+.island form > .feedback {
+  text-align: center;
+  color: #EE0000;
+}
+.island form > .feedback.no {
+  display: none;
+}
